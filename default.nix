@@ -1,6 +1,13 @@
 { pkgs, lib, fetchFromGitHub, rustPlatform }:
 
-rustPlatform.buildRustPackage rec {
+let
+  uiSrc = fetchFromGitHub {
+    owner = "MegaAntiCheat";
+    repo = "MegaAntiCheat-UI";
+    rev = "v1.0.1";
+    sha256 = "0js6wrxlslck9r68k6mxlbf9l5krmkw0nyy5wrgh1k9svq6pvp40";
+  };
+in rustPlatform.buildRustPackage rec {
   pname = "MegaAntiCheat";
   version = "0.0.6";
 
@@ -19,6 +26,11 @@ rustPlatform.buildRustPackage rec {
       "tf-demo-parser-0.5.1" = "sha256-QEUd2yTIshS2H+XO8p1ggh22tox3jgPoYybrv0MhKL8=";
     };
   };
+
+  postPatch = ''
+    cp -r ${uiSrc} ./ui
+  '';
+
   buildInputs = [ pkgs.openssl ];
   nativeBuildInputs = [ pkgs.pkg-config ];
 }

@@ -1,0 +1,5 @@
+ui/
+result
+*.kate-swp
+include_ui.sh
+macclient.log

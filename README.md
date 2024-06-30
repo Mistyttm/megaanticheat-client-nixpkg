@@ -6,6 +6,7 @@ The release builds from upstream (https://github.com/MegaAntiCheat/client-backen
 - [x] Get client_backend compiled
   - [x] Get client_backend running
 - [ ] Bundle UI
+### dunno if any of this will ever be done
 - [ ] Dynamically acquire the Cargo.lock
 - [ ] Dynamically acquire the ui
   - [ ] Bundle the ui into client_backend

@@ -10,6 +10,7 @@
       pkgsFor = nixpkgs.legacyPackages;
     in {
       packages = forAllSystems (system: {
+#         client_ui = pkgsFor.${system}.callPackage ./client_ui.nix { };
         default = pkgsFor.${system}.callPackage ./default.nix { };
       });
       devShells = forAllSystems (system: {

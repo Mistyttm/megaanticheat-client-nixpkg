@@ -19,6 +19,16 @@ rustPlatform.buildRustPackage rec {
       "tf-demo-parser-0.5.1" = "sha256-QEUd2yTIshS2H+XO8p1ggh22tox3jgPoYybrv0MhKL8=";
     };
   };
-  buildInputs = [ pkgs.openssl ];
+
+  postPatch = ''
+    cp -r ${./ui} ./ui
+    ls
+  '';
+
+  buildInputs = [
+    pkgs.openssl
+    pkgs.rustc
+    pkgs.cargo
+  ];
   nativeBuildInputs = [ pkgs.pkg-config ];
 }
